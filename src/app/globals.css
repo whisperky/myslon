@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+.mar-font {
+  font-family: var(--font-marcellus-sc);
+}
+
+.roboto-font {
+  font-family: var(--font-roboto-condensed);
+}
