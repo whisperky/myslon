@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Grid,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Divider, Flex, Grid, Image, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import ComicCollectionCard from "@/components/ComicCollectionCard";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { ComicArray } from "@/services/tempdata";
-import SmokeEffect from "@/components/SmokeEffect";
 
 export const ComicCardContainer = () => {
   return (
@@ -83,22 +74,22 @@ export const ComicCardContainer = () => {
         }}
         gap={[8, 8, 6, 6]}
       >
-        {ComicArray.map((comic) => (
+        {ComicArray.map((comic, index) => (
           <motion.div
             initial={{ y: 0 }}
             whileHover={{
               y: [0, -10, 0],
               transition: { repeat: Infinity, duration: 1 },
             }}
+            key={index}
           >
             <ComicCollectionCard
-              key={comic.id}
               id={comic.id}
               name={comic.name}
               genre={comic.genre}
               description={comic.description}
               imageUrl={comic.imageUrl}
-              isOnSale={true}
+              // isOnSale={true}
               timestamp={comic.timestamp}
               chainId={1}
               likes={comic.likes}
@@ -152,22 +143,22 @@ export const ComicCardContainer = () => {
         }}
         gap={[8, 8, 6, 6]}
       >
-        {ComicArray.map((comic) => (
+        {ComicArray.map((comic, index) => (
           <motion.div
             initial={{ y: 0 }}
             whileHover={{
               y: [0, -10, 0],
               transition: { repeat: Infinity, duration: 1 },
             }}
+            key={index}
           >
             <ComicCollectionCard
-              key={comic.id}
               id={comic.id}
               name={comic.name}
               genre={comic.genre}
               description={comic.description}
               imageUrl={comic.imageUrl}
-              isOnSale={true}
+              // isOnSale={true}
               timestamp={comic.timestamp}
               chainId={1}
               likes={comic.likes}

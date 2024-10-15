@@ -1,23 +1,17 @@
 import React from "react";
 import {
-  Avatar,
-  Button,
   Card,
-  Divider,
   Grid,
-  Stack,
   Box,
   Table,
   Tbody,
   Td,
-  Th,
   Thead,
   Tr,
   Text,
   Image,
   Flex,
 } from "@chakra-ui/react";
-import { ChevronRightIcon } from "@chakra-ui/icons";
 import { ComicArray } from "@/services/tempdata";
 
 export const TrendList = () => {

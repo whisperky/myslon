@@ -10,8 +10,9 @@ const SmokeEffect: React.FC = () => {
 
     let camera: THREE.PerspectiveCamera,
       scene: THREE.Scene,
-      renderer: THREE.WebGLRenderer,
-      smokeParticles: THREE.Mesh[] = [];
+      renderer: THREE.WebGLRenderer;
+
+    const smokeParticles: THREE.Mesh[] = [];
 
     const clock = new THREE.Clock();
 

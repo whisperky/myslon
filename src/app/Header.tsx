@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Box,
   Button,
   Flex,
   IconButton,
   Input,
   Text,
-  useColorMode,
+  // useColorMode,
   Image,
   Drawer,
   DrawerBody,
@@ -25,17 +24,15 @@ import { Banner } from "@/components/Banner";
 import { AccountIcon } from "@/components/icons/AccountIcon";
 
 export const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const accountRef = useRef<HTMLButtonElement>(null);
+  // const { colorMode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
-      var toolbar = document.getElementById("toolbar-menu");
-      var searchBar = document.getElementById("nav-searchbar");
-      var btnAccount = document.getElementById("btn-account");
+      const toolbar = document.getElementById("toolbar-menu");
+      const searchBar = document.getElementById("nav-searchbar");
+      const btnAccount = document.getElementById("btn-account");
       if (toolbar) {
         toolbar.style.boxShadow = "none";
         toolbar.style.border = "none";
@@ -47,16 +44,10 @@ export const Header = () => {
           toolbar.style.borderBottom = "1px solid dimgray";
           searchBar!.style.border = "1px solid dimgray";
           btnAccount!.style.border = "1px solid dimgray";
-          if (accountRef.current) {
-            accountRef.current.style.border = "1px solid dimgray";
-          }
         }
       }
     });
   }, []);
-
-  const headerBg = isScrolled ? "white" : "transparent";
-  const textColor = isScrolled ? "black" : "white";
 
   return (
     <Flex w="full" direction="column">
@@ -149,11 +140,11 @@ export const Header = () => {
           flex={1}
           justifyContent="right"
         >
-          <SearchBar isScrolled={isScrolled} />
+          <SearchBar />
         </Flex>
 
         <HStack spacing={2}>
-          <AccountButton isScrolled={isScrolled} ref={accountRef} />
+          <AccountButton />
           <IconButton
             rounded={"full"}
             aria-label="Search"
@@ -161,7 +152,7 @@ export const Header = () => {
             icon={<SearchIcon />}
             display={{ base: "flex", md: "none" }}
             variant="ghost"
-            color={textColor}
+            color="white"
             onClick={onOpen}
           />
           <IconButton
@@ -171,7 +162,7 @@ export const Header = () => {
             icon={<HamburgerIcon />}
             display={{ base: "flex", md: "none" }}
             variant="ghost"
-            color={textColor}
+            color="white"
             onClick={onOpen}
           />
         </HStack>
@@ -183,7 +174,7 @@ export const Header = () => {
   );
 };
 
-const SearchBar = ({ isScrolled }: { isScrolled: boolean }) => (
+const SearchBar = () => (
   <Flex
     id="nav-searchbar"
     as="form"
@@ -191,7 +182,7 @@ const SearchBar = ({ isScrolled }: { isScrolled: boolean }) => (
     maxW="400px"
     alignItems="center"
     justifyContent="right"
-    bg={isScrolled ? "white" : "rgb(255, 255, 255, 0.2)"}
+    bg="white"
     borderRadius="full"
     pl={2}
     onSubmit={(e) => e.preventDefault()}
@@ -213,24 +204,20 @@ const SearchBar = ({ isScrolled }: { isScrolled: boolean }) => (
   </Flex>
 );
 
-const AccountButton = React.forwardRef<
-  HTMLButtonElement,
-  { isScrolled: boolean }
->(({ isScrolled }, ref) => (
+const AccountButton = () => (
   <Button
-    ref={ref}
     id="btn-account"
     aria-label="Account"
     variant="ghost"
     borderRadius="full"
     color="white"
-    bg={isScrolled ? "transparent" : "whiteAlpha.200"}
+    bg="transparent"
     p={2}
-    _hover={{ bg: isScrolled ? "gray.100" : "whiteAlpha.300" }}
+    _hover={{ bg: "whiteAlpha.200" }}
   >
     <AccountIcon width={20} height={20} />
   </Button>
-));
+);
 
 const MobileDrawer = ({
   isOpen,
@@ -246,7 +233,7 @@ const MobileDrawer = ({
       <DrawerHeader>Menu</DrawerHeader>
       <DrawerBody>
         <VStack spacing={4} align="stretch">
-          <SearchBar isScrolled={true} />
+          <SearchBar />
           <Button variant="ghost">Drops</Button>
           <Button variant="ghost">Stats</Button>
           <Button variant="ghost">Account</Button>

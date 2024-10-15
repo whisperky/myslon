@@ -11,8 +11,8 @@ type BoxWithDiagonalCornersProps = {
   hasTopRightCorner?: boolean;
   hasBottomLeftCorner?: boolean;
   hasBottomRightCorner?: boolean;
-  props1?: any;
-  props2?: any;
+  props1?: BoxProps;
+  props2?: BoxProps;
   children?: React.ReactNode;
 };
 

@@ -1,15 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Image } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
-import {
-  EffectCreative,
-  Autoplay,
-  Navigation,
-  Pagination,
-} from "swiper/modules";
+// import type { Swiper as SwiperType } from "swiper";
+import { EffectCreative, Pagination } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -22,19 +17,19 @@ export const ImageSlider = () => {
 
   const [showButton, setShowButton] = useState(false);
 
-  const onAutoplayTimeLeft = (
-    _: SwiperType,
-    time: number,
-    progress: number
-  ) => {
-    if (progressCircle.current && progressContent.current) {
-      progressCircle.current.style.setProperty(
-        "--progress",
-        (1 - progress).toString()
-      );
-      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-    }
-  };
+  //   const onAutoplayTimeLeft = (
+  //     _: SwiperType,
+  //     time: number,
+  //     progress: number
+  //   ) => {
+  //     if (progressCircle.current && progressContent.current) {
+  //       progressCircle.current.style.setProperty(
+  //         "--progress",
+  //         (1 - progress).toString()
+  //       );
+  //       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  //     }
+  //   };
 
   const handleSlideChange = () => {
     setShowButton(false);

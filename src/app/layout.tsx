@@ -4,7 +4,6 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import localFont from "next/font/local";
 import "./globals.css";
-import "./ionicons.min.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

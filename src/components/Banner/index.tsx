@@ -1,37 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
-  Container,
-  Divider,
   Flex,
-  Grid,
-  Heading,
   Image,
-  Stack,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 
 import { ImageSlider } from "../ImageSlider";
 import { TrendList } from "@/containers/TrendList";
-import { TopList } from "@/containers/TopList";
-import ComicCollectionCard from "../ComicCollectionCard";
-import { ArrowRightIcon } from "@chakra-ui/icons";
-import { ComicArray } from "@/services/tempdata";
 import { ComicCardContainer } from "@/containers/ComicCardContainer";
 import { TrendingAdContainer } from "@/containers/TrendingAdContainer";
-import SmokeEffect from "../SmokeEffect";
+// import SmokeEffect from "../SmokeEffect";
 
 export const Banner = () => {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const [currentTab, setCurrentTab] = useState("trending");
+
+  useEffect(() => {
+    console.log("currentTab", currentTab);
+  }, [currentTab]);
 
   return (
     <>

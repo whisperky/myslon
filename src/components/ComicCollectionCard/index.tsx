@@ -1,26 +1,15 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import {
-  Avatar,
-  Box,
-  BoxProps,
-  Flex,
-  Switch,
-  useToast,
-} from "@chakra-ui/react";
+import React, { useCallback, useEffect, useState } from "react";
+import { Box, BoxProps, Flex } from "@chakra-ui/react";
 import { StarIcon, ViewIcon } from "@chakra-ui/icons";
+import Link from "next/link";
+import moment from "moment";
 // import { formatDistanceToNow } from "date-fns";
 
-import { setLikeCollectionChange } from "@/services/api";
 import { StarsIcon } from "@/components/icons";
 import CgptText from "@/components/CgptText";
 import BoxWithDiagonalCorners from "@/components/BoxWithDiagonalCorners";
-import NftImage from "@/components/ComicImage";
-import features from "../../services/features";
-import moment from "moment";
-import axios from "axios";
-import { requests } from "../../services/request";
-import { useRouter } from "next/navigation";
+import ComicImage from "@/components/ComicImage";
+import features from "@/services/features";
 
 interface ComicCollectionCardProps extends BoxProps {
   id: string;
@@ -30,23 +19,22 @@ interface ComicCollectionCardProps extends BoxProps {
   chainId: number;
   imageUrl: string;
   amount?: number;
-  tokenId?: string;
-  isMintable?: boolean;
-  isOnSale?: boolean;
+  // tokenId?: string;
+  // isMintable?: boolean;
+  // isOnSale?: boolean;
   likes?: number;
   views?: number;
   timestamp: number;
-  mintedImages?: any;
-  likesAddresses?: { address: string }[];
+  // mintedImages?: any;
   onEnded?: () => void;
-  setIsLikeChange?: (a: boolean) => void;
-  isLikeChange?: any;
-  type?: any;
-  isEnded?: any;
-  blockUser?: any;
-  setBlockUser?: any;
-  blacklisted?: any;
-  setPage?: any;
+  // setIsLikeChange?: (a: boolean) => void;
+  // isLikeChange?: any;
+  // type?: any;
+  isEnded?: boolean;
+  // blockUser?: any;
+  // setBlockUser?: any;
+  // blacklisted?: any;
+  // setPage?: any;
 }
 
 export default function ComicCollectionCard({
@@ -57,34 +45,33 @@ export default function ComicCollectionCard({
   chainId,
   imageUrl,
   amount,
-  tokenId,
-  isMintable,
-  isOnSale = true,
+  // tokenId,
+  // isMintable,
+  // isOnSale = true,
   likes,
   views,
   timestamp,
-  likesAddresses,
   onEnded = () => {},
-  setIsLikeChange = () => {},
-  isLikeChange,
-  mintedImages,
-  type,
+  // setIsLikeChange = () => {},
+  // isLikeChange,
+  // mintedImages,
+  // type,
   isEnded,
-  blockUser,
-  setBlockUser,
-  blacklisted,
-  setPage,
+  // blockUser,
+  // setBlockUser,
+  // blacklisted,
+  // setPage,
   ...props
 }: ComicCollectionCardProps) {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isLike, setLike] = useState<boolean>(false);
   const [timeAgo, setTimeAgo] = useState("");
-  const toast = useToast();
+  // const toast = useToast();
 
   const onLikeChange = async () => {
     setLoading(true);
     setLike(!isLike);
-    setIsLikeChange(!isLikeChange);
+    // setIsLikeChange(!isLikeChange);
     setLoading(false);
   };
 
@@ -102,8 +89,6 @@ export default function ComicCollectionCard({
     getTimeAgo();
   }, [timestamp, getTimeAgo]);
 
-  const router = useRouter();
-
   // Remove or comment out the unused logout function
   // const logout = () => {
   //   disconnect();
@@ -116,11 +101,6 @@ export default function ComicCollectionCard({
   //   router.push("/");
   // };
 
-  const handleBlockCollection = async (status: any) => {
-    // If you need to use the router here, make sure it's mounted
-    // Implement your block collection logic here
-    return true;
-  };
   // const handleBlockCollection = async (status: any) => {
   //   try {
   //     const response = await axios.post(
@@ -181,7 +161,7 @@ export default function ComicCollectionCard({
         props2={{
           position: "relative",
           w: "100%",
-          h: type === "singleItem" ? "414px" : "400px",
+          h: "414px",
           p: 0,
           border: "1px solid #ff00bb",
           borderBottomRadius: 5,
@@ -224,7 +204,7 @@ export default function ComicCollectionCard({
                   h="262px"
                   borderBottom="1px solid #353539"
                 >
-                  <NftImage imageUrl={imageUrl} />
+                  <ComicImage imageUrl={imageUrl} />
                 </Box>
                 <Box
                   position="absolute"
@@ -297,7 +277,7 @@ export default function ComicCollectionCard({
                       {isEnded ? "Ended" : "Not Ended"}
                     </CgptText>
                   </Box>
-                  {isOnSale && features.NFTCard.onSale && (
+                  {true && features.NFTCard.onSale && (
                     <Box
                       ml="4px"
                       p="6px"
@@ -409,13 +389,7 @@ export default function ComicCollectionCard({
                   color="rgba(239, 239, 229, 0.60)"
                   fontSize="12px"
                   textTransform="uppercase"
-                >
-                  {type === "collection"
-                    ? "Collection"
-                    : type === "singleItem"
-                    ? "Single Item"
-                    : ""}
-                </CgptText>
+                ></CgptText>
 
                 <CgptText
                   display="-webkit-box"
@@ -455,7 +429,7 @@ export default function ComicCollectionCard({
             />
           </Box>
           {/* {user?.isAdministrator && setBlockUser && ( */}
-          {true && setBlockUser && (
+          {/* {true && setBlockUser && (
             <Box position={"absolute"} top="170px" left="10px">
               <Flex direction="row" alignItems={"center"} w="full" gap="8px">
                 <Switch
@@ -486,7 +460,7 @@ export default function ComicCollectionCard({
                 </CgptText>
               </Flex>
             </Box>
-          )}
+          )} */}
         </Box>
       </BoxWithDiagonalCorners>
       {amount !== 1 && (

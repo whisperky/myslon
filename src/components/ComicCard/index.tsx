@@ -12,7 +12,7 @@ import {
 
 interface ComicCardProps {
   name: string;
-  symbol: string;
+  // symbol: string;
   description: string;
   imageUrl: string;
   traits: [];
@@ -22,22 +22,22 @@ interface ComicCardProps {
 
 export default function ComicCard({
   name,
-  symbol,
+  // symbol,
   description,
   imageUrl,
   traits,
   tokenId,
   isEnded = false,
   ...props
-}: ComicCardProps & any) {
+}: ComicCardProps) {
   const { getInputProps, getCheckboxProps } = useCheckbox(props);
 
   let labeledTrait = "";
-  Object.keys(traits).forEach((key) => {
+  Object.keys(traits).forEach((key: string) => {
     if (labeledTrait.length > 0) {
       labeledTrait += ", ";
     }
-    labeledTrait += `${key} : ${traits[key]}`;
+    labeledTrait += `${key} : ${traits[key as keyof typeof traits]}`;
   });
 
   return (

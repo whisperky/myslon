@@ -11,6 +11,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+
 import SmokeEffect from "@/components/SmokeEffect";
 
 export const Footer = () => {
