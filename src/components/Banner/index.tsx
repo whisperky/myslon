@@ -27,7 +27,7 @@ export const Banner = () => {
     console.log("currentTab", currentTab);
   }, [currentTab]);
 
-  const [isActive, setIsActive] = useState<Number>(0);
+  const [isActive, setIsActive] = useState<number>(0);
 
   return (
     <>

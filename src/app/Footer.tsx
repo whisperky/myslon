@@ -10,9 +10,7 @@ import {
   Button,
   Input,
 } from "@chakra-ui/react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-
-import SmokeEffect from "@/components/SmokeEffect";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
