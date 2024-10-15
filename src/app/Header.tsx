@@ -31,19 +31,19 @@ export const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", function () {
       const toolbar = document.getElementById("toolbar-menu");
-      const searchBar = document.getElementById("nav-searchbar");
-      const btnAccount = document.getElementById("btn-account");
+      // const searchBar = document.getElementById("nav-searchbar");
+      // const btnAccount = document.getElementById("btn-account");
       if (toolbar) {
         toolbar.style.boxShadow = "none";
         toolbar.style.border = "none";
 
-        searchBar!.style.border = "none";
-        btnAccount!.style.border = "none";
+        // searchBar!.style.border = "none";
+        // btnAccount!.style.border = "none";
         if (window.scrollY > 0) {
           toolbar.style.boxShadow = "1px 2px 8px rgba(0, 0, 0, 0.2)";
           toolbar.style.borderBottom = "1px solid dimgray";
-          searchBar!.style.border = "1px solid dimgray";
-          btnAccount!.style.border = "1px solid dimgray";
+          // searchBar!.style.border = "1px solid dimgray";
+          // btnAccount!.style.border = "1px solid dimgray";
         }
       }
     });
@@ -182,7 +182,8 @@ const SearchBar = () => (
     maxW="400px"
     alignItems="center"
     justifyContent="right"
-    bg="white"
+    bg="transparent"
+    border="1px solid dimgray"
     borderRadius="full"
     pl={2}
     onSubmit={(e) => e.preventDefault()}
@@ -209,9 +210,10 @@ const AccountButton = () => (
     id="btn-account"
     aria-label="Account"
     variant="ghost"
-    borderRadius="full"
     color="white"
     bg="transparent"
+    border="1px solid dimgray"
+    borderRadius="full"
     p={2}
     _hover={{ bg: "whiteAlpha.200" }}
   >
