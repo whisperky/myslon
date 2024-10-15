@@ -30,7 +30,7 @@ export const TrendingAdContainer = () => {
           Mystery Babylon
         </Heading>
         <Text
-          px={["8", "16", "32"]}
+          px={["2", "4", "16", "32"]}
           mt={4}
           fontSize={["lg", "xl"]}
           textAlign="center"
