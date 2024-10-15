@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Flex,
+  Grid,
   Image,
   Tab,
   TabList,
@@ -15,6 +16,7 @@ import { ImageSlider } from "../ImageSlider";
 import { TrendList } from "@/containers/TrendList";
 import { ComicCardContainer } from "@/containers/ComicCardContainer";
 import { TrendingAdContainer } from "@/containers/TrendingAdContainer";
+import { GenreArray } from "@/services/tempdata";
 // import SmokeEffect from "../SmokeEffect";
 
 export const Banner = () => {
@@ -25,9 +27,11 @@ export const Banner = () => {
     console.log("currentTab", currentTab);
   }, [currentTab]);
 
+  const [isActive, setIsActive] = useState<Number>(0);
+
   return (
     <>
-      <Box style={{ background: "linear-gradient(#181818, #181818" }}>
+      <Box style={{ background: "linear-gradient(rgb(33 2 2), rgb(0 0 0))" }}>
         <Flex maxW="90%" mx={"auto"} direction={"column"}>
           <Box pt="120px" fontSize="16px">
             {/* <Box
@@ -85,90 +89,41 @@ export const Banner = () => {
           }}
           className="mar-font"
         >
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="#f0b"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
+          <Grid
+            templateColumns={[
+              "repeat(3, 1fr)",
+              "repeat(3, 1fr)",
+              "repeat(9, 1fr)",
+            ]}
           >
-            All
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Action
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Romance
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Comedy
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Drama
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Fantasy
-          </Button>
-          <Button
-            variant="ghost"
-            fontSize="16px"
-            color="white"
-            fontWeight="700"
-            textTransform="initial"
-            _hover={{ bg: "whiteAlpha.200" }}
-            minW="auto"
-            px={4}
-          >
-            Thriller
-          </Button>
+            <Button
+              key={0}
+              variant="ghost"
+              fontSize="16px"
+              color={isActive === 0 ? "#ff00bb" : "white"}
+              fontWeight="700"
+              textTransform="initial"
+              _hover={{ bg: "whiteAlpha.200" }}
+              onClick={() => setIsActive(0)}
+            >
+              All
+            </Button>
+            {GenreArray.map((genre, index) => (
+              <Button
+                key={index + 1}
+                variant="ghost"
+                fontSize="16px"
+                color={isActive === index + 1 ? "#ff00bb" : "white"}
+                fontWeight="700"
+                textTransform="initial"
+                _hover={{ bg: "whiteAlpha.200" }}
+                minW="auto"
+                onClick={() => setIsActive(index + 1)}
+              >
+                {genre.name}
+              </Button>
+            ))}
+          </Grid>
         </Flex>
       </Box>
 
@@ -179,7 +134,7 @@ export const Banner = () => {
         <Flex
           position="relative"
           direction={"column"}
-          px={[4, 8, 16, 24]}
+          px={["10%", "10%", "15%", "15%"]}
           py={24}
           bgImage={"/img/page-background.jpg"}
           bgSize="cover"

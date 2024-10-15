@@ -20,7 +20,7 @@ export const Footer = () => {
   return (
     <Box
       as="footer"
-      className="w-full text-gray-800 pt-12  border-gray-600 bg-[#000000]"
+      className="w-full text-gray-800 pt-12 border-gray-600 bg-[#000000]"
       position="relative"
       overflow="hidden"
       color="white"
@@ -30,7 +30,7 @@ export const Footer = () => {
       </Box> */}
 
       <Flex
-        className="container mx-auto px-4 flex-wrap"
+        className="container mx-auto px-[15%] flex-wrap"
         position="relative"
         zIndex="1"
       >
@@ -80,9 +80,9 @@ export const Footer = () => {
             <Link href="https://instagram.com" isExternal>
               <Icon as={FaInstagram} boxSize={6} />
             </Link>
-            <Link href="https://linkedin.com" isExternal>
+            {/* <Link href="https://linkedin.com" isExternal>
               <Icon as={FaLinkedin} boxSize={6} />
-            </Link>
+            </Link> */}
           </HStack>
         </VStack>
 
@@ -111,7 +111,7 @@ export const Footer = () => {
         position="relative"
         zIndex="1"
       >
-        <Box
+        {/* <Box
           position="absolute"
           top="0"
           left="0"
@@ -120,7 +120,7 @@ export const Footer = () => {
           zIndex="-100"
         >
           <SmokeEffect />
-        </Box>
+        </Box> */}
         <Box
           position="absolute"
           top="0"
@@ -134,8 +134,9 @@ export const Footer = () => {
           © {currentYear} Mystery Babylon. All rights reserved.
         </Text>
       </Box>
+
       <Box
-        className="py-12 border-t border-gray-600 bg-[#000000]"
+        className="py-3 border-t border-gray-600 bg-[#000000]"
         position="relative"
         zIndex="1"
       ></Box>

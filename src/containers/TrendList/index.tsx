@@ -25,7 +25,7 @@ export const TrendList = () => {
       gap={4}
     >
       <Box>
-        <Card flex={1}>
+        <Card flex={1} bg="transparent">
           <Box overflowX="auto">
             <Table>
               <Thead>
@@ -46,7 +46,10 @@ export const TrendList = () => {
                   <Tr
                     key={index}
                     bgGradient="linear(to-r, black, black)"
-                    _hover={{ bgGradient: "linear(to-r, gray.900, red.700)" }}
+                    _hover={{
+                      bgGradient: "linear(to-r, gray.900, red.700)",
+                      backdropFilter: "blur(20px)",
+                    }}
                     color="whiteAlpha.800"
                     gridColumn={"auto"}
                   >

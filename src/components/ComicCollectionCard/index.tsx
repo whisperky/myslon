@@ -10,6 +10,7 @@ import CgptText from "@/components/CgptText";
 import BoxWithDiagonalCorners from "@/components/BoxWithDiagonalCorners";
 import ComicImage from "@/components/ComicImage";
 import features from "@/services/features";
+import { formatNumber } from "@/services/functions";
 
 interface ComicCollectionCardProps extends BoxProps {
   id: string;
@@ -197,12 +198,12 @@ export default function ComicCollectionCard({
               <Box
                 position="relative"
                 h="262px"
-                borderBottom="1px solid #353539"
+                borderBottom="1px solid #ff00bb"
               >
                 <Box
                   position="relative"
                   h="262px"
-                  borderBottom="1px solid #353539"
+                  borderBottom="1px solid #ff00bb"
                 >
                   <ComicImage imageUrl={imageUrl} />
                 </Box>
@@ -350,12 +351,12 @@ export default function ComicCollectionCard({
                   <Flex width="100%">
                     <CgptText
                       fontSize="12px"
-                      color="rgba(239, 239, 229, 0.30)"
+                      color="rgba(239, 239, 229, 0.80)"
                       width="100%"
                       textAlign="start"
                     >
-                      <StarIcon w={3} h={3} mr={1} />
-                      {likes}
+                      <StarIcon w={3} h={3} mr={1} color="#ff00bb" />
+                      {likes ? formatNumber(likes) : "0"}
                     </CgptText>
 
                     {views && (
@@ -363,11 +364,11 @@ export default function ComicCollectionCard({
                         width="100%"
                         p="auto"
                         fontSize="12px"
-                        color="rgba(239, 239, 229, 0.30)"
+                        color="rgba(239, 239, 229, 0.80)"
                         textAlign="end"
                       >
-                        <ViewIcon w={3} h={3} mr={1} />
-                        {views}
+                        <ViewIcon w={3} h={3} mr={1} color="#ff00bb" />
+                        {formatNumber(views)}
                       </CgptText>
                     )}
                   </Flex>

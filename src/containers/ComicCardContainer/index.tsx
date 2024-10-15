@@ -11,7 +11,7 @@ export const ComicCardContainer = () => {
     <Flex
       position="relative"
       direction={"column"}
-      px={[4, 8, 16, 24]}
+      px={["15%", "10%", "10%", "15%", "15%"]}
       py="24"
       bgImage={"/img/page-background.jpg"}
       bgSize="cover"
@@ -39,7 +39,13 @@ export const ComicCardContainer = () => {
       />
 
       <Flex justifyContent={"space-between"} alignItems={"end"}>
-        <Text pb={3} fontSize={20} fontWeight={700} color="white">
+        <Text
+          pb={3}
+          fontSize={20}
+          fontWeight={700}
+          color="white"
+          className="mar-font"
+        >
           Trending
         </Text>
         <Button
@@ -70,7 +76,8 @@ export const ComicCardContainer = () => {
           base: "repeat(1, 1fr)",
           sm: "repeat(2, 1fr)",
           md: "repeat(3, 1fr)",
-          lg: "repeat(6, 1fr)",
+          lg: "repeat(3, 1fr)",
+          xl: "repeat(6, 1fr)",
         }}
         gap={[8, 8, 6, 6]}
       >
@@ -139,7 +146,8 @@ export const ComicCardContainer = () => {
           base: "repeat(1, 1fr)",
           sm: "repeat(2, 1fr)",
           md: "repeat(3, 1fr)",
-          lg: "repeat(6, 1fr)",
+          lg: "repeat(3, 1fr)",
+          xl: "repeat(6, 1fr)",
         }}
         gap={[8, 8, 6, 6]}
       >

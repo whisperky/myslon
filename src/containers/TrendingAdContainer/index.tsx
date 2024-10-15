@@ -12,7 +12,7 @@ export const TrendingAdContainer = () => {
     <Box py={16} px={[4, 8, 16, 24]} backgroundColor={"#000000"}>
       <Box
         p={10}
-        mx={[0, 10, 20, 40]}
+        mx={[0, 10, 20, "15%"]}
         borderRadius="lg"
         bgGradient="linear(to-r, purple.900, red.900)"
         // boxShadow="0 0 20px rgba(255, 0, 255, 0.5)"

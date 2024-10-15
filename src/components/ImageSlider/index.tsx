@@ -93,11 +93,28 @@ export const ImageSlider = () => {
         </SwiperSlide>
         {[1, 2, 3, 4].map((num) => (
           <SwiperSlide key={num} className="w-full h-full rounded-xl">
-            <Image
-              src={`img/examples/banner${num}.jpg`}
-              objectFit="cover"
-              className="w-full h-full"
-            />
+            <Box position="relative" w="100%" h="100%">
+              <Box
+                position="absolute"
+                top="0"
+                left="0"
+                w="100%"
+                h="100%"
+                bgImage={`img/examples/banner${num}.jpg`}
+                bgSize="cover"
+                filter="blur(16px)"
+                transform="scale(1.1)"
+              />
+              <Image
+                src={`img/examples/banner${num}.jpg`}
+                alt="Mystery Babylon"
+                objectFit="contain"
+                width="100%"
+                height="100%"
+                position="relative"
+                zIndex="1"
+              />
+            </Box>
           </SwiperSlide>
         ))}
       </Swiper>
