@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Divider, Flex, Grid, Image, Text } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import ComicCollectionCard from "@/components/ComicCollectionCard";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { ComicArray } from "@/services/tempdata";
 
 export const ComicCardContainer = () => {
+  const trendingRef = useRef(null);
+  const topRef = useRef(null);
+  const trendingInView = useInView(trendingRef, {
+    once: true,
+    amount: 0.1,
+    margin: "-10px",
+  });
+  const topInView = useInView(topRef, {
+    once: true,
+    amount: 0.1,
+    margin: "-10px",
+  });
+
   return (
     <Flex
       position="relative"
@@ -71,6 +84,7 @@ export const ComicCardContainer = () => {
       </Flex>
       <Divider mb={[4, 4, 8, 8]} borderColor={"#ff00bb"} />
       <Grid
+        ref={trendingRef}
         p={[4, 2, 0, 0]}
         templateColumns={{
           base: "repeat(1, 1fr)",
@@ -83,7 +97,9 @@ export const ComicCardContainer = () => {
       >
         {ComicArray.slice(0, 6).map((comic, index) => (
           <motion.div
-            initial={{ y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={trendingInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{
               y: [0, -10, 0],
               transition: { repeat: Infinity, duration: 1 },
@@ -142,6 +158,7 @@ export const ComicCardContainer = () => {
       </Flex>
       <Divider mb={8} borderColor={"#ff00bb"} />
       <Grid
+        ref={topRef}
         templateColumns={{
           base: "repeat(1, 1fr)",
           sm: "repeat(2, 1fr)",
@@ -154,7 +171,9 @@ export const ComicCardContainer = () => {
       >
         {ComicArray.slice(4, 10).map((comic, index) => (
           <motion.div
-            initial={{ y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={topInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{
               y: [0, -10, 0],
               transition: { repeat: Infinity, duration: 1 },

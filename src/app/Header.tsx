@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Button,
   Flex,
   IconButton,
   Input,
-  // useColorMode,
   Image,
   Drawer,
   DrawerBody,
@@ -19,6 +17,9 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { Banner } from "@/components/Banner";
 import { AccountIcon } from "@/components/icons/AccountIcon";
 
@@ -70,103 +71,116 @@ export const Header = () => {
         transition="all 0.3s"
         zIndex={1000}
       >
-        <Flex alignItems="center">
-          <Image
-            src="/img/logo.png"
-            alt="Logo"
-            onClick={() => navigate("/")}
-            cursor="pointer"
-            h={10}
-          />
-          {/* <Text
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Flex direction="row" alignItems="center">
+            <Image
+              src="/img/logo.png"
+              alt="Logo"
+              onClick={() => navigate("/")}
+              cursor="pointer"
+              h={10}
+            />
+            {/* <Text
             display={{ base: "none", sm: "block" }}
             ml={4}
             fontWeight={900}
             fontSize={23}
             className="mar-font"
-          >
+            >
             Mystery Babylon
-          </Text> */}
-        </Flex>
+            </Text> */}
 
-        <Divider
-          display={{ base: "none", md: "flex" }}
-          orientation="vertical"
-          height="30px"
-          mx="4"
-        />
+            <Divider
+              display={{ base: "none", md: "flex" }}
+              orientation="vertical"
+              height="30px"
+              mx="4"
+            />
 
-        <Flex display={{ base: "none", md: "flex" }}>
-          <Button
-            colorScheme="whiteAlpha.200"
-            variant="link"
-            sx={{
-              mr: "15px",
-              fontWeight: 700,
-              fontSize: 16,
-              textTransform: "initial",
-            }}
-          >
-            Original
-          </Button>
-          <Button
-            colorScheme="whiteAlpha.200"
-            variant="link"
-            sx={{
-              mr: "20px",
-              fontWeight: 700,
-              fontSize: 16,
-              textTransform: "initial",
-            }}
-          >
-            Genres
-          </Button>
-          <Button
-            colorScheme="whiteAlpha.200"
-            variant="link"
-            sx={{
-              mr: "20px",
-              fontWeight: 700,
-              fontSize: 16,
-              textTransform: "initial",
-            }}
-          >
-            Popular
-          </Button>
-        </Flex>
+            <Flex display={{ base: "none", md: "flex" }}>
+              <Button
+                colorScheme="whiteAlpha.200"
+                variant="link"
+                sx={{
+                  mr: "15px",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  textTransform: "initial",
+                }}
+              >
+                Original
+              </Button>
+              <Button
+                colorScheme="whiteAlpha.200"
+                variant="link"
+                sx={{
+                  mr: "20px",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  textTransform: "initial",
+                }}
+              >
+                Genres
+              </Button>
+              <Button
+                colorScheme="whiteAlpha.200"
+                variant="link"
+                sx={{
+                  mr: "20px",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  textTransform: "initial",
+                }}
+              >
+                Popular
+              </Button>
+            </Flex>
+          </Flex>
+        </motion.div>
 
-        <Flex
-          display={{ base: "none", md: "flex" }}
-          alignItems="center"
-          flex={1}
-          justifyContent="right"
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
-          <SearchBar />
-        </Flex>
+          <Flex gap={[1, 2, 4, 4]}>
+            <Flex
+              display={{ base: "none", lg: "flex" }}
+              alignItems="center"
+              justifyContent="right"
+            >
+              <SearchBar />
+            </Flex>
 
-        <HStack spacing={2}>
-          <AccountButton />
-          <IconButton
-            rounded={"full"}
-            aria-label="Search"
-            bg="whiteAlpha.200"
-            icon={<SearchIcon />}
-            display={{ base: "flex", md: "none" }}
-            variant="ghost"
-            color="white"
-            onClick={onOpen}
-          />
-          <IconButton
-            rounded={"full"}
-            aria-label="Menu"
-            bg="whiteAlpha.200"
-            icon={<HamburgerIcon />}
-            display={{ base: "flex", md: "none" }}
-            variant="ghost"
-            color="white"
-            onClick={onOpen}
-          />
-        </HStack>
+            <HStack spacing={2}>
+              <AccountButton />
+              <IconButton
+                rounded={"full"}
+                aria-label="Search"
+                bg="whiteAlpha.200"
+                icon={<SearchIcon />}
+                display={{ base: "flex", lg: "none" }}
+                variant="ghost"
+                color="white"
+                onClick={onOpen}
+              />
+              <IconButton
+                rounded={"full"}
+                aria-label="Menu"
+                bg="whiteAlpha.200"
+                icon={<HamburgerIcon />}
+                display={{ base: "flex", lg: "none" }}
+                variant="ghost"
+                color="white"
+                onClick={onOpen}
+              />
+            </HStack>
+          </Flex>
+        </motion.div>
       </Flex>
 
       <MobileDrawer isOpen={isOpen} onClose={onClose} />
