@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Box, Button, Image, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Link } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -37,7 +37,10 @@ export const ImageSlider = () => {
   };
 
   return (
-    <div className="h-[55vh] bg-transparent font-sans text-sm text-black relative rounded-xl">
+    <Flex
+      h={["30vh", "40vh", "40vh", "55vh"]}
+      className="bg-transparent font-sans text-sm text-black relative rounded-xl"
+    >
       <Swiper
         grabCursor={true}
         effect={"creative"}
@@ -100,13 +103,13 @@ export const ImageSlider = () => {
                 left="0"
                 w="100%"
                 h="100%"
-                bgImage={`img/examples/banner${num}.jpg`}
+                bgImage={`/img/mystery_babylon.gif`}
                 bgSize="cover"
                 filter="blur(16px)"
                 transform="scale(1.1)"
               />
               <Image
-                src={`img/examples/banner${num}.jpg`}
+                src={`/img/mystery_babylon.gif`}
                 alt="Mystery Babylon"
                 objectFit="contain"
                 width="100%"
@@ -130,8 +133,8 @@ export const ImageSlider = () => {
           >
             <Link href="/read">
               <Button
-                bg="whiteAlpha.500"
-                color="white"
+                colorScheme="blackAlpha"
+                color="lightgray"
                 fontWeight={700}
                 mb={5}
                 mr={5}
@@ -165,6 +168,6 @@ export const ImageSlider = () => {
         </svg>
         <span ref={progressContent}></span>
       </div>
-    </div>
+    </Flex>
   );
 };

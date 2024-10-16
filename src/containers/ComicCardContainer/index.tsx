@@ -38,7 +38,7 @@ export const ComicCardContainer = () => {
         src="/img/border-bottom.png"
       />
 
-      <Flex justifyContent={"space-between"} alignItems={"end"}>
+      <Flex justifyContent={"space-between"} alignItems={"baseline"}>
         <Text
           pb={3}
           fontSize={20}
@@ -71,7 +71,7 @@ export const ComicCardContainer = () => {
       </Flex>
       <Divider mb={[4, 4, 8, 8]} borderColor={"#ff00bb"} />
       <Grid
-        p={[6, 2, 0, 0]}
+        p={[4, 2, 0, 0]}
         templateColumns={{
           base: "repeat(1, 1fr)",
           sm: "repeat(2, 1fr)",
@@ -81,7 +81,7 @@ export const ComicCardContainer = () => {
         }}
         gap={[8, 8, 6, 6]}
       >
-        {ComicArray.map((comic, index) => (
+        {ComicArray.slice(0, 6).map((comic, index) => (
           <motion.div
             initial={{ y: 0 }}
             whileHover={{
@@ -108,7 +108,7 @@ export const ComicCardContainer = () => {
         ))}
       </Grid>
 
-      <Flex justifyContent={"space-between"} alignItems={"end"}>
+      <Flex justifyContent={"space-between"} alignItems={"baseline"}>
         <Text
           pt={6}
           pb={3}
@@ -149,9 +149,10 @@ export const ComicCardContainer = () => {
           lg: "repeat(3, 1fr)",
           xl: "repeat(6, 1fr)",
         }}
+        p={[4, 2, 0, 0]}
         gap={[8, 8, 6, 6]}
       >
-        {ComicArray.map((comic, index) => (
+        {ComicArray.slice(4, 10).map((comic, index) => (
           <motion.div
             initial={{ y: 0 }}
             whileHover={{

@@ -36,11 +36,13 @@ export const Header = () => {
       if (toolbar) {
         toolbar.style.boxShadow = "none";
         toolbar.style.border = "none";
+        toolbar.style.backgroundColor = "transparent";
 
         // searchBar!.style.border = "none";
         // btnAccount!.style.border = "none";
         if (window.scrollY > 0) {
           toolbar.style.boxShadow = "1px 2px 8px rgba(0, 0, 0, 0.2)";
+          toolbar.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
           toolbar.style.borderBottom = "1px solid dimgray";
           // searchBar!.style.border = "1px solid dimgray";
           // btnAccount!.style.border = "1px solid dimgray";
@@ -61,7 +63,7 @@ export const Header = () => {
         alignItems="center"
         justifyContent="space-between"
         backdropFilter="blur(20px)"
-        px={{ base: 12, md: 16 }}
+        px={{ base: 6, sm: 8, md: 16 }}
         py={4}
         gap={[1, 2, 4, 4]}
         bg="transparent"
@@ -71,13 +73,13 @@ export const Header = () => {
       >
         <Flex alignItems="center">
           <Image
-            src="/img/icons/favicon.png"
+            src="/img/logo.png"
             alt="Logo"
             onClick={() => navigate("/")}
             cursor="pointer"
-            boxSize={10}
+            h={10}
           />
-          <Text
+          {/* <Text
             display={{ base: "none", sm: "block" }}
             ml={4}
             fontWeight={900}
@@ -85,7 +87,7 @@ export const Header = () => {
             className="mar-font"
           >
             Mystery Babylon
-          </Text>
+          </Text> */}
         </Flex>
 
         <Divider

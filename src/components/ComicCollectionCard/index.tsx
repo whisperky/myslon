@@ -172,6 +172,7 @@ export default function ComicCollectionCard({
               ? ""
               : "#353539 0px 1px 0px 0px, #121217 0px 10px 0px -4px, #353539 0px 10px 0px -3px,#121217 0px 20px 0px -7.5px, #353539 0px 20px 0px -7px",
           cursor: "pointer",
+          overflow: "hidden", // Add this line to contain the blur effect
           ...props,
         }}
       >
