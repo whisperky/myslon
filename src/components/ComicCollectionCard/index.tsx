@@ -185,7 +185,7 @@ export default function ComicCollectionCard({
           backgroundImage={`url(${imageUrl})`}
           backgroundSize="cover"
           backgroundPosition="center"
-          filter="blur(16px) brightness(0.2)"
+          filter="blur(20px) brightness(0.15)"
           zIndex={0}
         />
         <Box position="relative" zIndex={1} h="100%">
