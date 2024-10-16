@@ -98,7 +98,7 @@ export const TrendList = () => {
                 </Tr> */}
               </Thead>
               <Tbody>
-                {ComicArray.slice(6, 10).map((row, index) => (
+                {ComicArray.slice(5, 10).map((row, index) => (
                   <Tr
                     key={index}
                     bgGradient="linear(to-r, black, black)"
