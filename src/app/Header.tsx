@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ReactElement, useEffect } from "react";
 import {
   Button,
   Flex,
@@ -16,7 +16,13 @@ import {
   HStack,
   Divider,
 } from "@chakra-ui/react";
-import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
+import {
+  ViewIcon,
+  SearchIcon,
+  HamburgerIcon,
+  TimeIcon,
+  StarIcon,
+} from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -204,7 +210,7 @@ const SearchBar = () => (
     onSubmit={(e) => e.preventDefault()}
   >
     <Input
-      placeholder="Search webtoons, genres, or creators"
+      placeholder="Search ..."
       border="none"
       backgroundColor="transparent"
       _focus={{ boxShadow: "none" }}
@@ -244,18 +250,55 @@ const MobileDrawer = ({
   onClose: () => void;
 }) => (
   <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-    <DrawerOverlay />
-    <DrawerContent>
-      <DrawerCloseButton />
-      <DrawerHeader>Menu</DrawerHeader>
-      <DrawerBody>
-        <VStack spacing={4} align="stretch">
+    <DrawerOverlay backdropFilter="blur(5px)" />
+    <DrawerContent bg="rgba(0, 0, 0, 0.9)" color="white">
+      <DrawerCloseButton
+        color="#ff00bb"
+        top="25px"
+        _hover={{ bg: "whiteAlpha.200" }}
+      />
+      <DrawerHeader
+        borderBottomWidth="1px"
+        borderColor="#ff00bb"
+        fontSize="xl"
+        fontWeight="bold"
+        py={6}
+      >
+        Menu
+      </DrawerHeader>
+      <DrawerBody pt={8}>
+        <VStack spacing={6} align="stretch">
           <SearchBar />
-          <Button variant="ghost">Drops</Button>
-          <Button variant="ghost">Stats</Button>
-          <Button variant="ghost">Account</Button>
+          <Divider borderColor="whiteAlpha.300" />
+          <NavButton icon={<AccountIcon width={20} height={20} />}>
+            Account
+          </NavButton>
+          <NavButton icon={<StarIcon />}>Original</NavButton>
+          <NavButton icon={<ViewIcon />}>Genres</NavButton>
+          <NavButton icon={<TimeIcon />}>Popular</NavButton>
         </VStack>
       </DrawerBody>
     </DrawerContent>
   </Drawer>
+);
+
+const NavButton = ({
+  children,
+  icon,
+}: {
+  children: React.ReactNode;
+  icon: React.ReactNode;
+}) => (
+  <Button
+    variant="ghost"
+    color="white"
+    justifyContent="flex-start"
+    height="50px"
+    fontSize="lg"
+    leftIcon={icon as ReactElement}
+    _hover={{ bg: "whiteAlpha.200" }}
+    _active={{ bg: "whiteAlpha.300" }}
+  >
+    {children}
+  </Button>
 );
