@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   Heading,
+  Link,
   Text,
 } from "@chakra-ui/icons";
 
@@ -42,14 +43,16 @@ export const TrendingAdContainer = () => {
           betrayal, and hope against overwhelming odds.
         </Text>
         <Flex justifyContent="center" mt={6}>
-          <Button
-            rightIcon={<ArrowRightIcon />}
-            colorScheme="pink"
-            size="lg"
-            _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
-          >
-            Explore the Mystery
-          </Button>
+          <Link href="/read">
+            <Button
+              rightIcon={<ArrowRightIcon />}
+              colorScheme="pink"
+              size="lg"
+              _hover={{ transform: "translateY(-2px)", boxShadow: "lg" }}
+            >
+              Explore the Mystery
+            </Button>
+          </Link>
         </Flex>
       </Box>
     </Box>

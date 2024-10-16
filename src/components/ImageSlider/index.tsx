@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Box, Button, Image } from "@chakra-ui/react";
+import { Box, Button, Image, Link } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -128,19 +128,21 @@ export const ImageSlider = () => {
             transition={{ duration: 0.3 }}
             className="absolute bottom-1 left-4 z-20"
           >
-            <Button
-              bg="whiteAlpha.500"
-              color="white"
-              fontWeight={700}
-              mb={5}
-              mr={5}
-              p={2}
-              textAlign="center"
-              position="absolute"
-              bottom={0}
-            >
-              Start Reading
-            </Button>
+            <Link href="/read">
+              <Button
+                bg="whiteAlpha.500"
+                color="white"
+                fontWeight={700}
+                mb={5}
+                mr={5}
+                p={2}
+                textAlign="center"
+                position="absolute"
+                bottom={0}
+              >
+                Start Reading
+              </Button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

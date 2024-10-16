@@ -109,3 +109,81 @@ export const GenreArray = [
   
 ];
 
+export const fetchTempChapters = async (storyId: string) => {
+  // Simulating API delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const title = "Mystery Babylon";
+
+  return {
+    title: title,
+    storyId: storyId,
+    chapters: [
+      {
+        id: 1,
+        title: "Chapter 1: The Beginning",
+        images: [
+          "/img/temp_story/1-1.jpg",
+          "/img/temp_story/1-2.jpg",
+          "/img/temp_story/1-3.jpg",
+          "/img/temp_story/1-4.jpg",
+          "/img/temp_story/1-5.jpg",
+        ],
+      },
+      {
+        id: 2,
+        title: "Chapter 2: The Journey",
+        images: [
+          "/img/temp_story/2-1.jpg",
+          "/img/temp_story/2-2.jpg",
+          "/img/temp_story/2-3.jpg",
+          "/img/temp_story/2-4.jpg",
+          "/img/temp_story/2-5.jpg",
+        ],
+      },
+      {
+        id: 3,
+        title: "Chapter 3: The Climax",
+        images: [
+          "/img/temp_story/3-1.jpg",
+          "/img/temp_story/3-2.jpg",
+          "/img/temp_story/3-3.jpg",
+          "/img/temp_story/3-4.jpg",
+          "/img/temp_story/3-5.jpg",
+        ],
+      },
+      {
+        id: 4,
+        title: "Chapter 4: The Defeat",
+        images: [
+          "/img/temp_story/3-1.jpg",
+          "/img/temp_story/3-2.jpg",
+          "/img/temp_story/3-3.jpg",
+          "/img/temp_story/3-4.jpg",
+          "/img/temp_story/3-5.jpg",
+        ],
+      },
+      {
+        id: 5,
+        title: "Chapter 5: The Rebirth",
+        images: [
+          "/img/temp_story/3-1.jpg",
+          "/img/temp_story/3-2.jpg",
+          "/img/temp_story/3-3.jpg",
+          "/img/temp_story/3-4.jpg",
+          "/img/temp_story/3-5.jpg",
+        ],
+      },
+      {
+        id: 6,
+        title: "Chapter 6: The End",
+        images: [
+          "/img/temp_story/3-1.jpg",
+          "/img/temp_story/3-2.jpg",
+          "/img/temp_story/3-3.jpg",
+          "/img/temp_story/3-4.jpg",
+          "/img/temp_story/3-5.jpg",
+        ],
+      },
+    ]
+  };
+};

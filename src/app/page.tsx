@@ -13,14 +13,14 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 4000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   // const [mode, setMode] = useState("light");
 
-  if (!isLoaded) return <Loading />;
+  if (!isLoaded) return <Loading mode="dark" />;
 
   return (
     <div className="w-full mx-auto p-0 overflow">
