@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import Loading from "../Loading";
+import Link from "next/link";
 
 interface ChapterData {
   title: string;
@@ -200,13 +201,18 @@ export const ChapterViewer: React.FC<ChapterViewerProps> = ({
         transition="transform 0.3s ease-in-out"
         className="mar-font"
       >
-        <Text
-          fontSize="xl"
-          fontWeight="bold"
-          textShadow="0 0 10px #ff00ff, 0 0 10px #ff00ff, 0 0 10px #ff00ff"
-        >
-          {chapterData.title}
-        </Text>
+        <Link href={`/`}>
+          <Button variant="link">
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              color="white"
+              textShadow="0 0 10px #ff00ff, 0 0 10px #ff00ff, 0 0 10px #ff00ff"
+            >
+              {chapterData.title}
+            </Text>
+          </Button>
+        </Link>
       </Flex>
       <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
