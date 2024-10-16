@@ -5,7 +5,6 @@ import {
   Flex,
   IconButton,
   Input,
-  Text,
   // useColorMode,
   Image,
   Drawer,
