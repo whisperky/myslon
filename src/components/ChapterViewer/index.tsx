@@ -104,6 +104,7 @@ export const ChapterViewer: React.FC<ChapterViewerProps> = ({
           border="none"
           _hover={{ bg: "whiteAlpha.200" }}
           fontWeight="bold"
+          overflow="auto"
         >
           {chapterData.chapters.map((ch, index) => (
             <option
@@ -132,7 +133,7 @@ export const ChapterViewer: React.FC<ChapterViewerProps> = ({
         bg="rgba(0, 0, 0, 0.7)"
         color="white"
         p={4}
-        justifyContent="center"
+        justifyContent="space-between"
         alignItems="center"
         zIndex={10}
         backdropFilter="blur(10px)"
@@ -167,7 +168,7 @@ export const ChapterViewer: React.FC<ChapterViewerProps> = ({
       </Flex>
       <Box
         ref={scrollRef}
-        height="100vh"
+        height="100%"
         overflowY="auto"
         onClick={toggleNavBar}
         pt="60px"
