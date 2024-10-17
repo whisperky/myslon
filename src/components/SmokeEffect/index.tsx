@@ -18,14 +18,17 @@ const SmokeEffect: React.FC = () => {
 
     const init = () => {
       renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(
+        containerRef.current!.clientWidth,
+        containerRef.current!.clientHeight
+      );
       containerRef.current!.appendChild(renderer.domElement);
 
       scene = new THREE.Scene();
 
       camera = new THREE.PerspectiveCamera(
         75,
-        window.innerWidth / window.innerHeight,
+        containerRef.current!.clientWidth / containerRef.current!.clientHeight,
         1,
         10000
       );
@@ -75,9 +78,14 @@ const SmokeEffect: React.FC = () => {
     };
 
     const onWindowResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      if (!containerRef.current) return;
+      camera.aspect =
+        containerRef.current.clientWidth / containerRef.current.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(
+        containerRef.current.clientWidth,
+        containerRef.current.clientHeight
+      );
     };
 
     init();
@@ -91,7 +99,12 @@ const SmokeEffect: React.FC = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: "100%", height: "100%" }} />;
+  return (
+    <div
+      ref={containerRef}
+      style={{ width: "100%", height: "100%", position: "absolute" }}
+    />
+  );
 };
 
 export default SmokeEffect;

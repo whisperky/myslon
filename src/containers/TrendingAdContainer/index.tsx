@@ -26,7 +26,7 @@ export const TrendingAdContainer = () => {
     <Box py={16} px={[4, 8, 16, 24]} backgroundColor={"#000000"}>
       <motion.div
         ref={adRef}
-        initial={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, x: -50 }}
         animate={adInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.5 }}
       >

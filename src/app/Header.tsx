@@ -41,17 +41,17 @@ export const Header = () => {
       // const btnAccount = document.getElementById("btn-account");
       if (toolbar) {
         toolbar.style.boxShadow = "none";
-        toolbar.style.border = "none";
-        toolbar.style.backgroundColor = "transparent";
+        // toolbar.style.border = "1px solid #333333";
+        toolbar.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
 
         // searchBar!.style.border = "none";
         // btnAccount!.style.border = "none";
         if (window.scrollY > 0) {
           toolbar.style.boxShadow = "1px 2px 8px rgba(0, 0, 0, 0.2)";
-          toolbar.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-          toolbar.style.borderBottom = "1px solid dimgray";
-          // searchBar!.style.border = "1px solid dimgray";
-          // btnAccount!.style.border = "1px solid dimgray";
+          toolbar.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+          // toolbar.style.borderBottom = "none";
+          // searchBar!.style.border = "1px solid #333333ff";
+          // btnAccount!.style.border = "1px solid #333333ff";
         }
       }
     });
@@ -72,10 +72,11 @@ export const Header = () => {
         px={{ base: 6, sm: 8, md: 16 }}
         py={4}
         gap={[1, 2, 4, 4]}
-        bg="transparent"
+        bg="rgba(0, 0, 0, 0.3)"
         color="white"
         transition="all 0.3s"
-        zIndex={1000}
+        zIndex={10}
+        // borderBottom="1px solid #333333"
       >
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -204,7 +205,7 @@ const SearchBar = () => (
     alignItems="center"
     justifyContent="right"
     bg="transparent"
-    border="1px solid dimgray"
+    border="1px solid #333333ff"
     borderRadius="full"
     pl={2}
     onSubmit={(e) => e.preventDefault()}
@@ -233,7 +234,7 @@ const AccountButton = () => (
     variant="ghost"
     color="white"
     bg="transparent"
-    border="1px solid dimgray"
+    border="1px solid #333333ff"
     borderRadius="full"
     p={2}
     _hover={{ bg: "whiteAlpha.200" }}
