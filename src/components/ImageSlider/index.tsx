@@ -1,179 +1,186 @@
-import React, { useRef, useState } from "react";
-import { Box, Button, Flex, Image, Link } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Box, Button, Flex, Image, Link, Text } from "@chakra-ui/react";
+import { FaBookOpen } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-// import type { Swiper as SwiperType } from "swiper";
-import { EffectCreative, Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { EffectCube, Pagination, Autoplay } from "swiper/modules";
 
-// Import Swiper styles
+import { glowAnimation } from "../../services/functions";
+
 import "swiper/css";
+import "swiper/css/effect-cube";
 import "swiper/css/pagination";
-import "swiper/css/effect-creative";
 
 export const ImageSlider = () => {
-  const progressCircle = useRef<SVGSVGElement>(null);
-  const progressContent = useRef<HTMLSpanElement>(null);
-
   const [showButton, setShowButton] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
-  //   const onAutoplayTimeLeft = (
-  //     _: SwiperType,
-  //     time: number,
-  //     progress: number
-  //   ) => {
-  //     if (progressCircle.current && progressContent.current) {
-  //       progressCircle.current.style.setProperty(
-  //         "--progress",
-  //         (1 - progress).toString()
-  //       );
-  //       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  //     }
-  //   };
+  const images = [
+    "/img/mystery_babylon.gif",
+    "/img/mystery_babylon.gif",
+    "/img/mystery_babylon.gif",
+    "/img/mystery_babylon.gif",
+    "/img/mystery_babylon.gif",
+  ];
 
-  const handleSlideChange = () => {
+  const titles = [
+    "Mystery Babylon",
+    "Ancient Secrets",
+    "Hidden Truths",
+    "Forbidden Knowledge",
+    "Unveiling History",
+  ];
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setShowButton(true), 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    setActiveIndex(swiper.activeIndex);
     setShowButton(false);
-    setTimeout(() => setShowButton(true), 500); // Delay button appearance
+    setTimeout(() => setShowButton(true), 500);
   };
+
+  // console isHovering
+  useEffect(() => {}, [isHovering, activeIndex]);
 
   return (
     <motion.div
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.7 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="relative w-full h-[30vh] md:h-[40vh] lg:h-[60vh] overflow-hidden bg-transparent"
     >
-      <Flex
-        h={["30vh", "40vh", "40vh", "55vh"]}
-        className="bg-transparent font-sans text-sm text-black relative rounded-xl"
+      <Swiper
+        effect="cube"
+        grabCursor={true}
+        cubeEffect={{
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        loop={true}
+        autoplay={{
+          delay: 10000,
+          disableOnInteraction: false,
+        }}
+        modules={[EffectCube, Pagination, Autoplay]}
+        onSlideChange={handleSlideChange}
+        className="w-[90%] h-[80%] mx-auto mt-[5%]"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
       >
-        <Swiper
-          grabCursor={true}
-          effect={"creative"}
-          loop={true}
-          // autoplay={{
-          //   delay: 4500,
-          //   disableOnInteraction: false,
-          // }}
-          // onAutoplayTimeLeft={onAutoplayTimeLeft}
-          creativeEffect={{
-            prev: {
-              shadow: true,
-              origin: "left center",
-              translate: ["-5%", 0, -200],
-              rotate: [0, 100, 0],
-              opacity: 0.5,
-            },
-            next: {
-              origin: "right center",
-              translate: ["5%", 0, -200],
-              rotate: [0, -100, 0],
-              shadow: true,
-            },
-          }}
-          pagination={true}
-          onSlideChange={handleSlideChange}
-          modules={[EffectCreative, Pagination]}
-          className="w-full h-full mySwiper"
-        >
-          <SwiperSlide key={0} className="w-full h-full rounded-xl">
-            <Box position="relative" w="100%" h="100%">
-              <Box
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <Box
+              position="relative"
+              w="100%"
+              h="100%"
+              animation={`${glowAnimation} 3s infinite`}
+            >
+              <Image
+                src={image}
+                alt={titles[index]}
+                objectFit="cover"
+                width="100%"
+                height="100%"
+              />
+              {/* <Box
                 position="absolute"
                 top="0"
                 left="0"
-                w="100%"
-                h="100%"
-                bgImage={"/img/mystery_babylon.gif"}
-                bgSize="cover"
-                filter="blur(16px)"
-                transform="scale(1.1)"
-              />
-              <Image
-                src="/img/mystery_babylon.gif"
-                alt="Mystery Babylon"
-                objectFit="contain"
-                width="100%"
-                height="100%"
-                position="relative"
-                zIndex="1"
-              />
+                right="0"
+                bottom="0"
+                bg="rgba(0,0,0,0.5)"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text
+                  fontSize="4xl"
+                  fontWeight="bold"
+                  color="white"
+                  textShadow="2px 2px 4px rgba(0,0,0,0.5)"
+                >
+                  {titles[index]}
+                </Text>
+              </Box> */}
             </Box>
           </SwiperSlide>
-          {[1, 2, 3, 4].map((num) => (
-            <SwiperSlide key={num} className="w-full h-full rounded-xl">
-              <Box position="relative" w="100%" h="100%">
-                <Box
-                  position="absolute"
-                  top="0"
-                  left="0"
-                  w="100%"
-                  h="100%"
-                  bgImage={`/img/mystery_babylon.gif`}
-                  bgSize="cover"
-                  filter="blur(16px)"
-                  transform="scale(1.1)"
-                />
-                <Image
-                  src={`/img/mystery_babylon.gif`}
-                  alt="Mystery Babylon"
-                  objectFit="contain"
-                  width="100%"
-                  height="100%"
-                  position="relative"
-                  zIndex="1"
-                />
-              </Box>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        ))}
+      </Swiper>
 
-        <AnimatePresence>
-          {showButton && (
+      <AnimatePresence>
+        {showButton && (
+          <Flex className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute bottom-1 left-4 z-20"
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ duration: 0.5 }}
             >
               <Link href="/read">
                 <Button
-                  colorScheme="blackAlpha"
-                  color="lightgray"
+                  leftIcon={<FaBookOpen />}
+                  bgColor={"#ff00ffaa"}
+                  color={"white"}
+                  size="lg"
                   fontWeight={700}
-                  mb={5}
-                  mr={5}
-                  p={2}
-                  textAlign="center"
-                  position="absolute"
-                  bottom={0}
+                  p={6}
+                  borderRadius="full"
+                  boxShadow="0 0 20px rgba(128,0,128,0.5)"
+                  _hover={{
+                    transform: "scale(1.05)",
+                    boxShadow: "0 0 30px rgba(128,0,128,0.7)",
+                  }}
+                  transition="all 0.3s ease"
                 >
-                  Start Reading
+                  Read Now
                 </Button>
               </Link>
             </motion.div>
-          )}
-        </AnimatePresence>
+          </Flex>
+        )}
+      </AnimatePresence>
 
-        <div
-          className="absolute right-4 bottom-4 z-10 w-12 h-12 flex items-center justify-center font-bold text-[var(--swiper-theme-color)]"
-          slot="container-end"
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        pointerEvents="none"
+      />
+
+      {/* <motion.div
+        className="absolute top-4 right-4 z-20 text-white text-xl font-bold"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        {activeIndex + 1} / {images.length}
+      </motion.div> */}
+
+      {isHovering && (
+        <motion.div
+          className="absolute bottom-4 left-4 right-4 z-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
         >
-          <svg
-            viewBox="0 0 48 48"
-            ref={progressCircle}
-            className="absolute left-0 top-0 z-10 w-full h-full"
-          >
-            <circle
-              cx="24"
-              cy="24"
-              r="20"
-              className="stroke-[var(--swiper-theme-color)] fill-none stroke-[4px] [stroke-dasharray:125.6] [stroke-dashoffset:calc(125.6px*(1-var(--progress)))] rotate-[-90deg]"
-            ></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Flex>
+          <Text color="white" fontSize="lg" textAlign="center">
+            Hover over the image to pause the slideshow
+          </Text>
+        </motion.div>
+      )}
     </motion.div>
   );
 };
